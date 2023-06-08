@@ -4,7 +4,7 @@
 
 
     $mainPageScript=[];
-    $subLink =[];
+   
     $mainLink = 'https://www.mozilor.com';
     $links = GetInnerLinks::getLink($mainLink);
     $mainPageScript = GetScript::getScript($mainLink);
@@ -14,11 +14,18 @@
     }
     if(!empty($links))
     {
-        var_dump($links);
+       
         foreach($links as $link)
         {
-            echo $link."-";
-            $subLink = GetScript::getScript($mainLink.$link);
+            $subLink =[];
+            
+            if(strpos($link,"https")!==false)
+            {
+                $subLink = GetScript::getScript($link);
+            }
+            else{
+                $subLink = GetScript::getScript($mainLink.$link);
+            }
             foreach($subLink as $script)
             {
                 echo $script."<br>";
