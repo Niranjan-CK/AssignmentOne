@@ -2,8 +2,7 @@
 
     class GetInnerLinks
     {
-        public $link;
-        public $links =[];
+
         public static function getLink($link)
         {
             $i=0;
@@ -31,6 +30,7 @@
                 return $links;
             }
             else{
+                
                 $link = $link.$links[$i];
                 $i++;
                 $path = "//a/@href";
