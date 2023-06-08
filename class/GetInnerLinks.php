@@ -14,11 +14,16 @@
             $html->loadHtmlFile($link);
             $xpath = new DOMXPath( $html );
             $nodelist = $xpath->query( $path);
+            // var_dump($nodelist);
             foreach ($nodelist as $n){
                 if($count<5)
                 {
-                    array_push($links,$n->nodeValue);
-                    $count++;
+                    // echo($n->nodeValue."<br>");
+                    if($n->nodeValue!='/' && $n->nodeValue!='#' && !in_array($n->nodeValue,$links))
+                    {
+                        array_push($links,$n->nodeValue);
+                        $count++;
+                    }
                 }
                 else
                 {

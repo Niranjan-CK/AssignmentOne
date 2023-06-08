@@ -8,15 +8,16 @@
     $mainLink = 'https://www.mozilor.com';
     $links = GetInnerLinks::getLink($mainLink);
     $mainPageScript = GetScript::getScript($mainLink);
-    foreach ($mainPageScript as $mScript)
-    {
-        echo $mScript."<br>";
-    }
+    // foreach ($mainPageScript as $mScript)
+    // {
+    //     echo $mScript."<br>";
+    // }
     if(!empty($links))
     {
+        var_dump($links);
         foreach($links as $link)
         {
-            echo $link;
+            echo $link."-";
             $subLink = GetScript::getScript($mainLink.$link);
             foreach($subLink as $script)
             {
